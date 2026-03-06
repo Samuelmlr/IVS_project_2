@@ -6,3 +6,12 @@
  */
 
 #include "mathlib.h"
+
+int addition(int a, int b) { return 0; }
+int subtraction(int a, int b) { return 0; }
+int multiplication(int a, int b) { return 0; }
+double division(double a, double b) { return 0.0; }
+int modulo(int a, int b) { return 0; }
+double power(double base, int exponent) { return 0.0; }
+double root(double value, int n) { return 0.0; }
+long long factorial(int n) { return 0; }
