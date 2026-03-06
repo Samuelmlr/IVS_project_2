@@ -6,11 +6,16 @@
  */
 
 #include "mathlib.h"
+#include <math.h>
 
 double addition(double a, double b) { return a + b; }
 double subtraction(double a, double b) { return a - b; }
-double multiplication(double a, double b) { return 0; }
-double division(double a, double b) { return 0.0; }
+double multiplication(double a, double b) { return a * b; }
+double division(double a, double b) {
+  if (b == 0.0)
+    return NAN;
+  return a / b;
+}
 int modulo(int a, int b) { return 0; }
 double power(double base, int exponent) { return 0.0; }
 double root(double value, int n) { return 0.0; }
