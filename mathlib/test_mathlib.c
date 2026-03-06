@@ -84,6 +84,21 @@ START_TEST(test_division) {
 }
 END_TEST
 
+/**
+ * @brief Testuje funkci factorial.
+ * Testuje základní hodnoty, nulu a záporný vstup.
+ */
+START_TEST(test_factorial) {
+  ck_assert_int_eq(factorial(0), 1);        // 0! = 1
+  ck_assert_int_eq(factorial(1), 1);        // 1! = 1
+  ck_assert_int_eq(factorial(5), 120);      // 5! = 120
+  ck_assert_int_eq(factorial(10), 3628800); // Větší číslo
+
+  double res = factorial(-5);
+  ck_assert_msg(isnan(res), "Faktoriál záporného čísla musí vrátit NAN");
+}
+END_TEST
+
 // sada testu
 Suite *math_suite(void) {
   Suite *s;
@@ -96,6 +111,7 @@ Suite *math_suite(void) {
   tcase_add_test(tc_core, test_subtraction);
   tcase_add_test(tc_core, test_multiplication);
   tcase_add_test(tc_core, test_division);
+  tcase_add_test(tc_core, test_factorial);
 
   suite_add_tcase(s, tc_core);
   return s;
