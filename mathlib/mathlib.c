@@ -20,35 +20,29 @@ double division(double a, double b) {
   return a / b;
 }
 
-int modulo(int a, int b) { return 0; }
+int modulo(int a, int b) {
+  if (b == 0)
+    return 0;
+  return a % b;
+}
 
-/**
- * @brief Vypočítá mocninu base na exponent.
- */
 double power(double base, int exponent) {
-  if (base == 0.0 && exponent < 0) { // delenni nulou
+  if (base == 0.0 && exponent < 0)
     return NAN;
-  }
   return pow(base, (double)exponent);
 }
 
-/**
- * @brief Vypočítá n-tou odmocninu z x.
- * Využívá standardní funkci pow(x, 1/n).
- */
-double root(double x, int n) {
-  // Ošetření neplatných stavů
-  if (n <= 0) {
+double root(double value, int n) {
+  if (n <= 0)
     return NAN;
-  }
-  if (x < 0 && n % 2 == 0) {
-    return NAN; // Sudá odmocnina ze záporného čísla
-  }
-  if (x == 0) {
+  if (value < 0 && n % 2 == 0)
+    return NAN;
+  if (value == 0)
     return 0.0;
+  if (value < 0) {
+    return -pow(-value, 1.0 / (double)n);
   }
-  // (double)n zajistí, že dělení nebude celočíselné
-  return pow(x, 1.0 / (double)n);
+  return pow(value, 1.0 / (double)n);
 }
 
 double factorial(int n) {
