@@ -7,6 +7,7 @@
 
 #include "mathlib.h"
 #include <check.h>
+#include <math.h>
 #include <stdlib.h>
 
 /**
@@ -57,6 +58,32 @@ START_TEST(test_subtraction) {
 }
 END_TEST
 
+/**
+ * @brief Testuje násobení reálných čísel.
+ */
+START_TEST(test_multiplication) {
+  ck_assert_double_eq_tol(multiplication(1.0, 2.0), 2.0, 0.001);
+  ck_assert_double_eq_tol(multiplication(-2.0, 5.0), -10.0, 0.001);
+  ck_assert_double_eq_tol(multiplication(1.5, 2.0), 3.0, 0.001);
+  ck_assert_double_eq_tol(multiplication(0.0, 50.5), 0.0, 0.001);
+  ck_assert_double_eq_tol(multiplication(0.2, 0.2), 0.04, 0.001);
+}
+END_TEST
+
+/**
+ * @brief Testuje dělení reálných čísel včetně dělení nulou.
+ */
+START_TEST(test_division) {
+  ck_assert_double_eq_tol(division(10.0, 2.0), 5.0, 0.001);
+  ck_assert_double_eq_tol(division(5.0, 4.0), 1.25, 0.001);
+  ck_assert_double_eq_tol(division(-10.0, 4.0), -2.5, 0.001);
+
+  // Test dělení nulou - očekáváme not a number
+  double result = division(5.0, 0.0);
+  ck_assert_msg(isnan(result), "Dělení nulou musí vrátit NAN");
+}
+END_TEST
+
 // sada testu
 Suite *math_suite(void) {
   Suite *s;
@@ -67,6 +94,8 @@ Suite *math_suite(void) {
 
   tcase_add_test(tc_core, test_addition);
   tcase_add_test(tc_core, test_subtraction);
+  tcase_add_test(tc_core, test_multiplication);
+  tcase_add_test(tc_core, test_division);
 
   suite_add_tcase(s, tc_core);
   return s;
