@@ -9,26 +9,26 @@
 #define MATHLIB_H
 
 /**
- * @brief Funkce sečte dvě celá čísla typu int a vrátí výsledek.
+ * @brief Funkce sečte dvě čísla typu double a vrátí výsledek.
  * @param a První sčítanec.
  * @param b Druhý sčítanec.
- * @return int výsledný součet parametrů a a b.
+ * @return double výsledný součet parametrů a a b.
  */
-int addition(int a, int b);
+double addition(double a, double b);
 
 /** @brief Rozdíl dvou čísel
  * @param a Menšenec.
  * @param b Menšitel.
- * @return int výsledný rozdíl parametrů a a b.
+ * @return double výsledný rozdíl parametrů a a b.
  */
-int subtraction(int a, int b);
+double subtraction(double a, double b);
 
 /** @brief Součin dvou čísel
  * @param a První činitel.
  * @param b Druhý činitel.
- * @return int výsledný součin parametrů a a b.
+ * @return double výsledný součin parametrů a a b.
  */
-int multiplication(int a, int b);
+double multiplication(double a, double b);
 
 /** @brief Podíl dvou čísel
  * @param a Dělenec.

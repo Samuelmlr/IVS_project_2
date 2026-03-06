@@ -7,9 +7,9 @@
 
 #include "mathlib.h"
 
-int addition(int a, int b) { return a + b; }
-int subtraction(int a, int b) { return a - b; }
-int multiplication(int a, int b) { return 0; }
+double addition(double a, double b) { return a + b; }
+double subtraction(double a, double b) { return a - b; }
+double multiplication(double a, double b) { return 0; }
 double division(double a, double b) { return 0.0; }
 int modulo(int a, int b) { return 0; }
 double power(double base, int exponent) { return 0.0; }
