@@ -9,20 +9,51 @@
 #include <check.h>
 #include <stdlib.h>
 
+/**
+ * @brief Testuje funkci addition pro sčítání reálných čísel.
+ * * Test zahrnuje:
+ * - sčítání celých čísel předaných jako double
+ * - sčítání kladných desetinných čísel
+ * - sčítání záporných desetinných čísel
+ * - sčítání velmi malých hodnot (ověření přesnosti)
+ */
 START_TEST(test_addition) {
-  ck_assert_int_eq(addition(1, 2), 3);
-  ck_assert_int_eq(addition(-1, 1), 0);
-  ck_assert_int_eq(addition(-100, 1), -99);
-  ck_assert_int_eq(addition(12, 15), 27);
+  // Celá čísla jako double
+  ck_assert_double_eq_tol(addition(1.0, 2.0), 3.0, 0.001);
+  ck_assert_double_eq_tol(addition(-100.0, 1.0), -99.0, 0.001);
+
+  // Desetinná čísla
+  ck_assert_double_eq_tol(addition(1.5, 0.2), 1.7, 0.001);
+  ck_assert_double_eq_tol(addition(100.1, 9.9), 110.0, 0.001);
+
+  // Záporná desetinná čísla
+  ck_assert_double_eq_tol(addition(-1.5, -2.5), -4.0, 0.001);
+  ck_assert_double_eq_tol(addition(-10.5, 5.2), -5.3, 0.001);
+
+  // Velmi malá čísla
+  ck_assert_double_eq_tol(addition(0.0001, 0.0002), 0.0003, 0.00001);
 }
 END_TEST
 
+/**
+ * @brief Testuje funkci subtraction pro odčítání reálných čísel.
+ * * Test zahrnuje:
+ * - základní rozdíly celých čísel
+ * - odečítání desetinných čísel
+ * - odečítání záporných čísel (ověření znaménkových pravidel)
+ */
 START_TEST(test_subtraction) {
-  ck_assert_int_eq(subtraction(10, 4), 6);
-  ck_assert_int_eq(subtraction(0, 5), -5);
-  ck_assert_int_eq(subtraction(50, 75), -25);
-  ck_assert_int_eq(subtraction(500, 500), 0);
-  ck_assert_int_eq(subtraction(0, 5), -5);
+  // Základní
+  ck_assert_double_eq_tol(subtraction(10.0, 4.0), 6.0, 0.001);
+  ck_assert_double_eq_tol(subtraction(0.0, 5.0), -5.0, 0.001);
+
+  // Desetinná
+  ck_assert_double_eq_tol(subtraction(5.5, 2.1), 3.4, 0.001);
+  ck_assert_double_eq_tol(subtraction(1.1, 1.1), 0.0, 0.001);
+
+  // Odčítání záporného čísla
+  ck_assert_double_eq_tol(subtraction(5.0, -2.5), 7.5, 0.001);
+  ck_assert_double_eq_tol(subtraction(-10.2, -1.2), -9.0, 0.001);
 }
 END_TEST
 
