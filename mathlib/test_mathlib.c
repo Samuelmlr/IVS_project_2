@@ -146,6 +146,14 @@ START_TEST(test_root) {
 }
 END_TEST
 
+START_TEST(test_abs) {
+  ck_assert_double_eq_tol(absolute_value(5.0), 5.0, 0.001);
+  ck_assert_double_eq_tol(absolute_value(-5.0), 5.0, 0.001);
+  ck_assert_double_eq_tol(absolute_value(0.0), 0.0, 0.001);
+  ck_assert_double_eq_tol(absolute_value(-0.123), 0.123, 0.001);
+}
+END_TEST
+
 // sada testu
 Suite *math_suite(void) {
   Suite *s;
@@ -161,6 +169,7 @@ Suite *math_suite(void) {
   tcase_add_test(tc_core, test_factorial);
   tcase_add_test(tc_core, test_power);
   tcase_add_test(tc_core, test_root);
+  tcase_add_test(tc_core, test_abs);
 
   suite_add_tcase(s, tc_core);
   return s;
