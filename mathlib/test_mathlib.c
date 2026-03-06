@@ -99,6 +99,53 @@ START_TEST(test_factorial) {
 }
 END_TEST
 
+/**
+ * @brief Testuje funkci mocniny (power).
+ */
+START_TEST(test_power) {
+  // Celá čísla
+  ck_assert_double_eq_tol(power(2.0, 3), 8.0, 0.001); // 2^3 = 8
+  ck_assert_double_eq_tol(power(3.0, 2), 9.0, 0.001); // 3^2 = 9
+
+  // Desetinný základ
+  ck_assert_double_eq_tol(power(2.5, 2), 6.25, 0.001); // 2.5^2 = 6.25
+
+  // Nultá mocnina (vždy 1, i pro 0^0 se v C definuje 1)
+  ck_assert_double_eq_tol(power(5.0, 0), 1.0, 0.001);
+  ck_assert_double_eq_tol(power(0.0, 0), 1.0, 0.001);
+
+  // Záporný exponent (1 / base^exponent)
+  ck_assert_double_eq_tol(power(2.0, -2), 0.25, 0.001); // 2^-2 = 1/4 = 0.25
+
+  // Základ nula a záporný exponent (dělení nulou -> NAN)
+  double res = power(0.0, -1);
+  ck_assert_msg(isnan(res), "Mocnina 0^-1 musi vratit NAN (deleni nulou)");
+}
+END_TEST
+
+/**
+ * @brief Testuje funkci odmocniny (root).
+ */
+START_TEST(test_root) {
+  // Cela čísla
+  ck_assert_double_eq_tol(root(4.0, 2), 2.0, 0.001);  // sqrt(4) = 2
+  ck_assert_double_eq_tol(root(27.0, 3), 3.0, 0.001); // cubert(27) = 3
+  ck_assert_double_eq_tol(root(0.0, 2), 0.0, 0.001);  // sqrt(0) = 0
+
+  // Desetinné výsledky
+  ck_assert_double_eq_tol(root(2.0, 2), 1.414, 0.001); // sqrt(2) cca 1.414
+
+  // Neplatné vstupy -> NAN
+  // Sudá odmocnina ze záporného čísla
+  double result_neg = root(-4.0, 2);
+  ck_assert_msg(isnan(result_neg), "Suda odmocnina ze zaporneho cisla = NAN");
+
+  // Nultá odmocnina
+  double result_zero = root(10.0, 0);
+  ck_assert_msg(isnan(result_zero), "Nulta odmocnina = NAN");
+}
+END_TEST
+
 // sada testu
 Suite *math_suite(void) {
   Suite *s;
@@ -112,6 +159,8 @@ Suite *math_suite(void) {
   tcase_add_test(tc_core, test_multiplication);
   tcase_add_test(tc_core, test_division);
   tcase_add_test(tc_core, test_factorial);
+  tcase_add_test(tc_core, test_power);
+  tcase_add_test(tc_core, test_root);
 
   suite_add_tcase(s, tc_core);
   return s;
