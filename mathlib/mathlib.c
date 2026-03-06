@@ -20,12 +20,6 @@ double division(double a, double b) {
   return a / b;
 }
 
-int modulo(int a, int b) {
-  if (b == 0)
-    return 0;
-  return a % b;
-}
-
 double power(double base, int exponent) {
   if (base == 0.0 && exponent < 0)
     return NAN;
@@ -63,3 +57,4 @@ double absolute_value(double a) {
   }
   return a;
 }
+/* End of file mathlib.c */

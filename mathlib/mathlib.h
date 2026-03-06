@@ -64,4 +64,7 @@ double root(double value, int n);
  * @return double Výsledný faktoriál.
  */
 double factorial(int n);
+
 #endif /* MATHLIB_H */
+
+/* End of file mathlib.h */
