@@ -56,3 +56,10 @@ double factorial(int n) {
   }
   return result;
 }
+
+double absolute_value(double a) {
+  if (a < 0) {
+    return -a;
+  }
+  return a;
+}
