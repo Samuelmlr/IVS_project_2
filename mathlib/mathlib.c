@@ -19,4 +19,14 @@ double division(double a, double b) {
 int modulo(int a, int b) { return 0; }
 double power(double base, int exponent) { return 0.0; }
 double root(double value, int n) { return 0.0; }
-long long factorial(int n) { return 0; }
+double factorial(int n) {
+  if (n < 0)
+    return NAN;
+  if (n == 0)
+    return 1.0;
+  double result = 1.0;
+  for (int i = 1; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+}

@@ -59,10 +59,9 @@ double power(double base, int exponent);
  */
 double root(double value, int n);
 
-/** @brief Faktoriál čísla n
+/** @brief Faktoriál čísla n, double pro oveření NAN
  * @param n Číslo, pro které se faktoriál počítá.
- * @return long long Výsledný faktoriál.
+ * @return double Výsledný faktoriál.
  */
-long long factorial(int n);
-
+double factorial(int n);
 #endif /* MATHLIB_H */
