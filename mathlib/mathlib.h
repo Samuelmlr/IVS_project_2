@@ -37,12 +37,12 @@ double multiplication(double a, double b);
  */
 double division(double a, double b);
 
-/** @brief Modulo (zbytek po celočíselném dělení)
- * @param a Dělenec.
- * @param b Dělitel.
- * @return int výsledný zbytek po celočíselném dělení
+/**
+ * @brief Vypočítá absolutní hodnotu čísla.
+ * @param a Vstupní číslo.
+ * @return double Absolutní hodnota čísla a.
  */
-int modulo(int a, int b);
+double absolute_value(double a);
 
 /** @brief n-tá mocnina čísla(a^n)
  * @param base Základ mocniny(číslo, které umocňujeme).
